@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="h3 mb-3 font-weight-normal">Article Information</h1>
+		<p>Title:
+			{{ article.Titre }}</p>
+		<p>Content:
+			{{ article.Contenu }}</p>
+		<p>Creation date:
+			{{ article.DateDeCreation|date('Y-m-d') }}</p>
+		<p>Creator:
+			{{ article.Auteur.email }}</p>
+
+		<a class="btn btn-lg btn-primary" href="{{ path('app_article_affichage') }}">Return</a>
+	</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="row">
+
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title">Articles List</h4>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered verticle-middle table-responsive-sm">
+							<thead>
+								<tr>
+									<th>Article ID</th>
+									<th>User ID</th>
+									<th>Title</th>
+									<th>Content</th>
+									<th>Creation Date</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for article in articles %}
+									<tr>
+										<td>{{ article.id }}</td>
+										<td>{{ article.Auteur.id }}</td>
+										<td>{{ article.Titre }}</td>
+										<td>{{ article.Contenu }}</td>
+										<td>{{ article.DateDeCreation|date('Y-m-d') }}</td>
+
+										<td>
+											{% if app.user and article.Auteur.id == app.user.id %}
+												<a href="{{ path('app_article_modifier', {'id': article.id}) }}">Update</a>
+												|
+												<a href="{{ path('app_article_supprimer', {'id':article.id})}}">Delete</a>
+												|
+											{% endif %}
+											<a href="{{ path('app_article_afficher', {'id': article.id}) }}">Show</a>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<a class="btn btn-lg btn-primary" href="{{path('app_article_ajouter')}}">Add an article?</a>
+			<a class="btn btn-lg btn-danger" href="{{ path('app_logout') }}">Logout</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
