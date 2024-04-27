@@ -1,8 +1,13 @@
-# Articles-Management
+# Articles Management
+
 This project is for testing and learning purposes 
 ## Installation
 
-After cloning the project make sure that your Xaamp or Wamp is up and running then execute these commands to create your database and entities
+After cloning the project make sure that your Xaamp or Wamp is up and running, you first need to go to your .env file and add your database
+```bash
+DATABASE_URL="mysql://root@localhost/Hatlone"
+```
+then execute these commands to create your database and entities
 
 ```bash
 symfony console doctrine:database:create
